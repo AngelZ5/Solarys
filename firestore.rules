@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Inscrições públicas (formulário) + leitura só para usuários autenticados (painel admin).
+    // Ajuste conforme sua política; publique com: firebase deploy --only firestore:rules
+    match /inscricoes/{docId} {
+      allow create: if true;
+      allow read: if request.auth != null;
+      allow update: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    // Lista de presença - apenas usuários autenticados (painel admin)
+    match /presencas/{docId} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow update: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+  }
+}

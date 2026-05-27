@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+}
+
+select {
+  color: #333; /* Cor do texto selecionado */
+  padding: 10px;
+}
